@@ -37,10 +37,10 @@ document.addEventListener( `keyup`, event => {
                     return modalImg.src = galleryItems[ind + 1].original;
                 } else if( event.key === `ArrowLeft` && ind != 0 ) {
                     return modalImg.src = galleryItems[ind - 1].original;
-                } else if( ind === 8 ) {
+                } else if( ind === galleryItems.length - 1 ) {
                     return modalImg.src = galleryItems[0].original;
                 } else {
-                    return modalImg.src = galleryItems[8].original;
+                    return modalImg.src = galleryItems[galleryItems.length - 1].original;
                 }
             }
         }
