@@ -29,17 +29,19 @@ document.addEventListener( `keyup`, event => {
 } );
 
 document.addEventListener( `keyup`, event => {
-    for( let obj of galleryItems ) {
-        const ind = galleryItems.indexOf( obj, 0 );
-        if( obj.original === event.currentTarget.body.querySelector( `.lightbox__image` ).src && galleryItems.length <= ind >= 0 ) {
-            if( event.key === `ArrowRight` && ind <= galleryItems.length - 2 ) {
-                return modalImg.src = galleryItems[ind + 1].original;
-            } else if( event.key === `ArrowLeft` && ind != 0 ) {
-                return modalImg.src = galleryItems[ind - 1].original;
-            } else if( ind === 8 ) {
-                return modalImg.src = galleryItems[0].original;
-            } else {
-                return modalImg.src = galleryItems[8].original;
+    if( event.key === `ArrowRight` || event.key === `ArrowLeft` ) {
+        for( let obj of galleryItems ) {
+            const ind = galleryItems.indexOf( obj, 0 );
+            if( obj.original === event.currentTarget.body.querySelector( `.lightbox__image` ).src && galleryItems.length <= ind >= 0 ) {
+                if( event.key === `ArrowRight` && ind <= galleryItems.length - 2 ) {
+                    return modalImg.src = galleryItems[ind + 1].original;
+                } else if( event.key === `ArrowLeft` && ind != 0 ) {
+                    return modalImg.src = galleryItems[ind - 1].original;
+                } else if( ind === 8 ) {
+                    return modalImg.src = galleryItems[0].original;
+                } else {
+                    return modalImg.src = galleryItems[8].original;
+                }
             }
         }
     }
