@@ -10,8 +10,11 @@ const arrImages = galleryItems.reduce( ( liStr, elem ) => liStr + `<li class="ga
 imagesList.insertAdjacentHTML( `afterbegin`, arrImages );
 
 imagesList.addEventListener( `click`, ( event ) => {
-    modalDiv.setAttribute( `class`, `is-open` );
-    modalImg.src = event.target.getAttribute( `data-source` );
+    const li = event.target.closest( `li` );
+    if( li ) {
+        modalDiv.setAttribute( `class`, `is-open` );
+        modalImg.src = event.target.getAttribute( `data-source` );
+    }
 } );
 
 function closeModalWindow () {
@@ -39,9 +42,8 @@ document.addEventListener( `keyup`, event => {
                     return modalImg.src = galleryItems[ind - 1].original;
                 } else if( ind === galleryItems.length - 1 ) {
                     return modalImg.src = galleryItems[0].original;
-                } else {
-                    return modalImg.src = galleryItems[galleryItems.length - 1].original;
                 }
+                return modalImg.src = galleryItems[galleryItems.length - 1].original;
             }
         }
     }
