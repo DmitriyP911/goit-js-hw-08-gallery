@@ -23,7 +23,11 @@ function closeModalWindow () {
 
 button.addEventListener( `click`, closeModalWindow );
 
-modalDiv.addEventListener( `click`, closeModalWindow );
+modalDiv.addEventListener( `click`, ( event ) => {
+    if( event.target != modalImg ) {
+        closeModalWindow();
+    }
+} );
 
 document.addEventListener( `keyup`, event => {
     if( event.key === `Escape` ) {
