@@ -19,6 +19,7 @@ imagesList.addEventListener( `click`, ( event ) => {
 
 function closeModalWindow () {
     modalDiv.setAttribute( `class`, `lightbox js-lightbox` );
+    modalImg.src = "none";
 }
 
 button.addEventListener( `click`, closeModalWindow );
